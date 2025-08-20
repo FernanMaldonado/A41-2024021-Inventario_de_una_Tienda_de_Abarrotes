@@ -63,7 +63,7 @@ public class InventarioDeUnaTiendaDeAbarrotesApplication implements CommandLineR
 			case 1 -> {
 				logger.info(salto+"*** Lista de Productos***"+salto);
 				List<Producto> productos = productoService.listarProductos();
-				productos.forEach(cliente -> logger.info(cliente.toString()+salto));
+				productos.forEach(producto -> logger.info(producto.toString()+salto));
 			}
 			case 2 -> {
 				logger.info(salto+"*** Buscar Producto por su codigo ***"+salto);
