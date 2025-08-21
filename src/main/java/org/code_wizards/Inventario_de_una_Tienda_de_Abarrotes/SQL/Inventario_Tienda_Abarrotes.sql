@@ -30,22 +30,6 @@ Create table Productos (
 		Categoria(idCategoria)
 );
 
-Create Table Factura(
-	idFactura int auto_increment,
-    idCliente int not null,
-    idCategoria int not null,
-    idProducto int not null,
-    total decimal(10,2) default 0.00,
-    cantidad int not null,
-    constraint pk_factura primary key (idFactura),
-     constraint fk_factura_cliente foreign key(idCliente)references
-		Cliente(idCliente),
-    constraint fk_factura_categoria foreign key(idCategoria)references
-		Categoria(idCategoria),
-        constraint fk_factura_producto foreign key(idProducto)references
-		productos(idProducto)
-	);
-
 insert into Cliente (nombre, apellido, telefono, nit)
 values
 ('Carlos', 'Ramírez', '5551-2345', '12345-21');
@@ -55,9 +39,5 @@ values("Gaseaosa","Bebida con alto grado de Azucar");
 
 insert into productos(idCategoria,nombreProducto,marca,descripcion,precio)
 values(1,"Coca-Cola","Coca-Cola","Bebida Azucarada",19.00);
-
-insert into Factura (idCliente,idCategoria,idProducto,total,cantidad)
-values
-(1,1,1,19.00,1);
 
 select * from productos;

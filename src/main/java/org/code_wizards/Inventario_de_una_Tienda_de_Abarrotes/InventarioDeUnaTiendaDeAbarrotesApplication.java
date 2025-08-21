@@ -97,33 +97,39 @@ public class InventarioDeUnaTiendaDeAbarrotesApplication implements CommandLineR
 				logger.info("Producto Agregado" + producto + salto);
 			}
 
-			case 4 -> {
-				logger.info(salto+"*** Modificar Producto ***"+salto);
-				logger.info("Agregue el codigo del producto a modificar");
-				var codigo = Integer.parseInt(consola.nextLine());
-				Producto producto = productoService.buscarProductoPorId(codigo);
-				if (producto != null){
-					logger.info("Ingrese el Id de la categoria al la que pertenece: ");
-					var idCategoria = consola.nextLine();
-					logger.info("Ingrese el nombre del Producto ");
-					var nombre = consola.nextLine();
-					logger.info("Ingrese la marca del Producto ");
-					var marca = consola.nextLine();
-					logger.info("Ingrese la descripcion del Producto ");
-					var descripcion = consola.nextLine();
-					logger.info("Ingrese el precio del producto ");
-					var precio = consola.nextLine();
-					producto.setIdCategoria(Integer.parseInt(idCategoria));
-					producto.setNombreProducto(nombre);
-					producto.setMarca(marca);
-					producto.setDescripcion(descripcion);
-					producto.setPrecio(Integer.parseInt(precio));
-					logger.info("Cliente agregado: " + producto + salto);
-				}else{
-					logger.info("Cliente No Encontrado" + producto + salto);
-				}
-			}
-			case 5 -> {
+            case 4 -> {
+                logger.info(salto+"*** Modificar Producto ***"+salto);
+                logger.info("Agregue el codigo del producto a modificar");
+                var codigo = Integer.parseInt(consola.nextLine());
+                Producto producto = productoService.buscarProductoPorId(codigo);
+                if (producto != null){
+                    logger.info("Ingrese el Id de la categoria al la que pertenece: ");
+                    var idCategoria = consola.nextLine();
+                    logger.info("Ingrese el nombre del Producto ");
+                    var nombre = consola.nextLine();
+                    logger.info("Ingrese la marca del Producto ");
+                    var marca = consola.nextLine();
+                    logger.info("Ingrese la descripcion del Producto ");
+                    var descripcion = consola.nextLine();
+                    logger.info("Ingrese el precio del producto ");
+                    var precio = consola.nextLine();
+
+                    producto.setIdCategoria(Integer.parseInt(idCategoria));
+                    producto.setNombreProducto(nombre);
+                    producto.setMarca(marca);
+                    producto.setDescripcion(descripcion);
+                    producto.setPrecio(Integer.parseInt(precio));
+
+
+                    productoService.guardarProducto(producto);
+
+                    logger.info("✅ Producto actualizado: " + producto + salto);
+                } else {
+                    logger.info("⚠️ Producto No Encontrado" + salto);
+                }
+            }
+
+            case 5 -> {
 				logger.info(salto+ "*** Eliminar Producto ***");
 				logger.info("Ingrese el codigo del Cliente a eliminar");
 				var codigo = Integer.parseInt(consola.nextLine());
@@ -136,11 +142,11 @@ public class InventarioDeUnaTiendaDeAbarrotesApplication implements CommandLineR
 				}
 			}
 			case 6 ->{
-				logger.info("Gracias por visitar" + salto + salto);
-				salir = true;
-			}
+                logger.info("Gracias por visitar" + salto + salto);
+                salir = true;
+            }
 			default -> logger.info("Opcion invalidad");
 		}
-		return false;
+		return salir;
 	}
 }

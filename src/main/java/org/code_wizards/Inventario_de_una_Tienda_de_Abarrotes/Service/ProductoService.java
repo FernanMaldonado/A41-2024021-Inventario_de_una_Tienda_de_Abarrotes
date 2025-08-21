@@ -13,15 +13,14 @@ public class ProductoService implements IProductoService{
 
     @Override
     public List<Producto> listarProductos() {
-        List<Producto> productos = productoRepository.findAll();
-        return List.of();
+        return productoRepository.findAll(); // devuelve lo que realmente encontró
     }
 
     @Override
     public Producto buscarProductoPorId(Integer codigo) {
-        Producto producto = productoRepository.findById(codigo).orElse( null);
-        return null;
+        return productoRepository.findById(codigo).orElse(null); // devuelve el producto o null si no existe
     }
+
 
     @Override
     public void guardarProducto(Producto producto) {
