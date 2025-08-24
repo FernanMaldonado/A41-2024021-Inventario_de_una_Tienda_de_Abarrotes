@@ -123,9 +123,9 @@ public class InventarioDeUnaTiendaDeAbarrotesApplication implements CommandLineR
 
                     productoService.guardarProducto(producto);
 
-                    logger.info("✅ Producto actualizado: " + producto + salto);
+                    logger.info(" Producto actualizado con exito: " + producto + salto);
                 } else {
-                    logger.info("⚠️ Producto No Encontrado" + salto);
+                    logger.info(" Producto No Encontrado" + salto);
                 }
             }
 
@@ -136,7 +136,7 @@ public class InventarioDeUnaTiendaDeAbarrotesApplication implements CommandLineR
 				var producto = productoService.buscarProductoPorId(codigo);
 				if (producto != null){
 					productoService.eliminarProducto(producto);
-					logger.info("Cliente eliminado, adios bye bye" + producto + salto);
+					logger.info("Cliente eliminado con exito" + producto + salto);
 				}else{
 					logger.info("Cliente NO encontrado " + producto + salto);
 				}
