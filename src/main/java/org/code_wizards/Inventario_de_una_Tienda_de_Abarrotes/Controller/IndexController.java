@@ -58,23 +58,32 @@ public class IndexController {
     }
 
     public void eliminarProducto() {
+        // Verificar si hay un producto seleccionado
         if (this.productoSelecionado == null) {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN, "Atención", "Debe seleccionar un producto"));
             return;
         }
 
+        // Log del producto que se eliminará
         LOGGER.info("Producto a eliminar: " + this.productoSelecionado);
 
+        // Llamada al servicio de eliminación (supongo que es un servicio)
         this.productoService.eliminarProducto(this.productoSelecionado);
+
+        // Eliminar el producto de la lista
         this.productos.remove(this.productoSelecionado);
 
+        // Limpiar la selección
         this.productoSelecionado = null;
 
+        // Mostrar mensaje de éxito
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Producto eliminado"));
 
+        // Actualizar la interfaz de usuario con AJAX
         PrimeFaces.current().ajax().update("formulario-productos:mensaje-emergente",
                 "formulario-productos:tabla-productos");
     }
+
 }

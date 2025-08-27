@@ -32,7 +32,7 @@
                                 <div class="flex align-items-center justify-content-center
                                             w-20rem h4rem bg-yellow-500 font-bold m-2
                                             text-gray-900 border-round">
-                                    <h3>Registro de Productos de Una tienda de Abarrotes - Flim</h3>
+                                    <h3> Registro Inventario de Productos </h3>
                                 </div>
                             </div>
                         </f:facet>
@@ -60,14 +60,11 @@
                                              styleClass="ui-button-primary">
                                 <f:setPropertyActionListener value="#{producto}"
                                                              target="#{indexController.productoSelecionado}"/>
-                            </p:commandButton>
 
-                            <p:commandButton value="Eliminar" icon="pi pi-trash"
-                                             styleClass="ui-button-danger"
-                                             actionListener="#{indexController.eliminarProducto}"
-                                             update=":formulario-productos:tabla-productos :formulario-productos:mensaje-emergente">
-                                <f:setPropertyActionListener value="#{producto}"
-                                                             target="#{indexController.productoSelecionado}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Eliminar" icon="pi pi-trash" class="ui-button-danger" process="@this"
+                                             oncomplete="PF('ventanaEliminarProducto').show()">
+                                <f:setPropertyActionListener value="#{producto}" target="#{indexController.productoSelecionado}"/>
                             </p:commandButton>
 
                         </p:column>
@@ -81,39 +78,41 @@
                 <p:dialog header="Detalle Productos" showEffect="fade" modal="true" widgetVar="ventanaModalProducto" responsive="true">
                     <p:outputPanel id="ventana-producto" class="ui-fluid">
                         <div class="field">
-                            <p:outputLabel for="idCategoria">Nombre</p:outputLabel>
+                            <p:outputLabel for="idCategoria">ID Categoria</p:outputLabel>
                             <p:inputText id="idCategoria" required="true"
                                          value="#{indexController.productoSelecionado.idCategoria}"/>
                         </div>
                         <div class="field">
-                            <p:outputLabel for="nombreProducto">Apellido</p:outputLabel>
+                            <p:outputLabel for="nombreProducto">Nombre del Producto</p:outputLabel>
                             <p:inputText id="nombreProducto" required="true"
                                          value="#{indexController.productoSelecionado.nombreProducto}"/>
                         </div>
                         <div class="field">
-                            <p:outputLabel for="marca">Telefono</p:outputLabel>
+                            <p:outputLabel for="marca">Marca del Producto</p:outputLabel>
                             <p:inputText id="marca" required="true"
                                          value="#{indexController.productoSelecionado.marca}"/>
                         </div>
                         <div class="field">
-                            <p:outputLabel for="descripcion">Correo</p:outputLabel>
+                            <p:outputLabel for="descripcion">Descripcion del Producto</p:outputLabel>
                             <p:inputText id="descripcion" required="true"
                                          value="#{indexController.productoSelecionado.descripcion}"/>
                         </div>
                         <div class="field">
-                            <p:outputLabel for="precio">Genero</p:outputLabel>
+                            <p:outputLabel for="precio">Precio del Producto</p:outputLabel>
                             <p:inputText id="precio" required="true"
                                          value="#{indexController.productoSelecionado.precio}"/>
                         </div>
                     </p:outputPanel>
                     <f:facet name="footer">
-                        <p:commandButton value="Guardar" icon="pi pi-check"
-                                         process="ventana-producto @this"
-                                         actionListener="#{indexController.guardarProducto}"
-                                         update=":formulario-productos:tabla-productos :formulario-productos:mensaje-emergente"
+                        <p:commandButton value="Guardar" icon="pi pi-check"  process="ventana-producto @this" actionListener="#{indexController.guardarProducto}"
                                          oncomplete="PF('ventanaModalProducto').hide()"/>
+                        <p:commandButton value="Cancelar" icon="pi pi-times" onclick="PF('ventanaModalProducto').hide()" class="ui-button-secondary" type="button"/>
                     </f:facet>
                 </p:dialog>
+                <p:confirmDialog widgetVar="ventanaEliminarProducto" showEffect="fade" width="300" message="Desea eliminar el Producto?" header="Confirmar" severity="warn">
+                    <p:commandButton value="Si" icon="pi pi-check" process="@this" actionListener="#{indexController.eliminarProducto}" oncomplete="PF('ventanaEliminarProducto').hide()"/>
+                    <p:commandButton value="No" icon="pi pi-times" onclick="PF('ventanaEliminarProducto').hide()" styleClass="ui-button-secondary" type="button"/>
+                </p:confirmDialog>
             </h:form>
         </div>
     </h:body>
