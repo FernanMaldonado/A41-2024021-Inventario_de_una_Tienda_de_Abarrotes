@@ -3,15 +3,21 @@ Create database Inventario_Tienda_Abarrotes ;
 Use Inventario_Tienda_Abarrotes;
 
 Create Table Cliente (
-	idCliente int auto_increment,
-	nombre varchar (64),
-    apellido varchar (64),
-    telefono varchar (16),
-    email varchar(60) not null,
-    contrasena varchar(50) not null,
-    nit varchar(50) not null,
-    constraint pk_Clientes primary key (idCliente)
+    idCliente INT AUTO_INCREMENT,
+    nombre VARCHAR(64) NOT NULL,
+    apellido VARCHAR(64) NOT NULL,
+    genero ENUM('Masculino', 'Femenino', 'Otro') NOT NULL,
+    fechaNacimiento DATE NOT NULL,
+    telefono VARCHAR(16),
+    correo VARCHAR(100) NOT NULL UNIQUE,
+    contrasena VARCHAR(255) NOT NULL,
+    direccion VARCHAR(150),
+    nit VARCHAR(20) UNIQUE,
+    fechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    activo BOOLEAN DEFAULT TRUE,
+    CONSTRAINT pk_Cliente PRIMARY KEY (idCliente)
 );
+
 Create Table Categoria(
 	idCategoria int auto_increment,
     nombreCategoria varchar(50) not null,
@@ -37,4 +43,4 @@ values("Gaseaosa","Bebida con alto grado de Azucar");
 insert into productos(idCategoria,nombreProducto,marca,descripcion,precio)
 values(1,"Coca-Cola","Coca-Cola","Bebida Azucarada",19.00);
 
-select * from productos;
+select * from Cliente;

@@ -1,0 +1,41 @@
+package org.code_wizards.Inventario_de_una_Tienda_de_Abarrotes.Service;
+
+import org.code_wizards.Inventario_de_una_Tienda_de_Abarrotes.Entity.Cliente;
+import org.code_wizards.Inventario_de_una_Tienda_de_Abarrotes.Repository.IClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ClienteService implements IClienteService {
+
+    @Autowired
+    private IClienteRepository clienteRepository;
+
+    @Override
+    public List<Cliente> listarClientes() {
+        return clienteRepository.findAll();
+    }
+
+    @Override
+    public void guardarCliente(Cliente cliente) {
+        clienteRepository.save(cliente);
+    }
+
+
+    @Override
+    public void eliminarCliente(Cliente cliente) {
+
+    }
+
+    @Override
+    public Cliente buscarPorEmail(String correo) {
+        return null;
+    }
+
+    @Override
+    public Cliente login(String correo, String contrasena) {
+        return clienteRepository.findByCorreoAndContrasena(correo, contrasena).orElse(null);
+    }
+}
