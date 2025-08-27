@@ -7,9 +7,10 @@ Create Table Cliente (
 	nombre varchar (64),
     apellido varchar (64),
     telefono varchar (16),
+    email varchar(60) not null,
+    contrasena varchar(50) not null,
     nit varchar(50) not null,
     constraint pk_Clientes primary key (idCliente)
-
 );
 Create Table Categoria(
 	idCategoria int auto_increment,
@@ -29,10 +30,6 @@ Create table Productos (
     constraint fk_productos_categoria foreign key(idCategoria)references
 		Categoria(idCategoria)
 );
-
-insert into Cliente (nombre, apellido, telefono, nit)
-values
-('Carlos', 'Ramírez', '5551-2345', '12345-21');
 
 insert into Categoria(nombreCategoria,descripcion)
 values("Gaseaosa","Bebida con alto grado de Azucar");

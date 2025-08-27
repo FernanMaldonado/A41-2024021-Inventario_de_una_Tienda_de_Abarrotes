@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-// SpringBootApplication
+@SpringBootApplication
 public class InventarioDeUnaTiendaDeAbarrotesApplication implements CommandLineRunner {
 	@Autowired
 	private IProductoService productoService;
