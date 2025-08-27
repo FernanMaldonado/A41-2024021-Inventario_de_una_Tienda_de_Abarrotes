@@ -97,6 +97,19 @@
                     </div>
 
                     <div class="field">
+                        <p:outputLabel for="telefono">Teléfono</p:outputLabel>
+                        <p:inputText id="telefono" required="true"
+                                     value="#{clienteController.clienteSeleccionado.telefono}" />
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="direccion">Dirección</p:outputLabel>
+                        <p:inputText id="direccion" required="true"
+                                     value="#{clienteController.clienteSeleccionado.direccion}" />
+                    </div>
+
+
+                    <div class="field">
                         <p:outputLabel for="emailRegistro">Correo Electrónico</p:outputLabel>
                         <p:inputText id="emailRegistro" required="true"
                                      value="#{clienteController.clienteSeleccionado.correo}" />

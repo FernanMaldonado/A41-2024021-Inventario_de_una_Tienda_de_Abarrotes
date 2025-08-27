@@ -27,12 +27,10 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private String genero;              // Masculino, Femenino, Otro
-    private LocalDate fechaNacimiento;
     private String telefono;
     private String correo;
     private String contrasena;
     private String direccion;
-    private String nit;
     private LocalDate fechaRegistro;
     private Boolean activo;
 
@@ -69,14 +67,6 @@ public class Cliente {
         this.genero = genero;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
     public String getTelefono() {
         return telefono;
     }
@@ -107,14 +97,6 @@ public class Cliente {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public String getNit() {
-        return nit;
-    }
-
-    public void setNit(String nit) {
-        this.nit = nit;
     }
 
     public LocalDate getFechaRegistro() {

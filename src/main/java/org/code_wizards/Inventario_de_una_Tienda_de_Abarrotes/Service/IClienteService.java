@@ -7,7 +7,5 @@ import java.util.List;
 public interface IClienteService {
     List<Cliente> listarClientes();
     void guardarCliente(Cliente cliente);
-    void eliminarCliente(Cliente cliente);
-    Cliente buscarPorEmail(String email);
     Cliente login(String email, String contrasena);
 }

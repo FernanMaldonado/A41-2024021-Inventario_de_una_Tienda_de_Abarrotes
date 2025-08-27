@@ -23,17 +23,6 @@ public class ClienteService implements IClienteService {
         clienteRepository.save(cliente);
     }
 
-
-    @Override
-    public void eliminarCliente(Cliente cliente) {
-
-    }
-
-    @Override
-    public Cliente buscarPorEmail(String correo) {
-        return null;
-    }
-
     @Override
     public Cliente login(String correo, String contrasena) {
         return clienteRepository.findByCorreoAndContrasena(correo, contrasena).orElse(null);

@@ -7,12 +7,10 @@ Create Table Cliente (
     nombre VARCHAR(64) NOT NULL,
     apellido VARCHAR(64) NOT NULL,
     genero ENUM('Masculino', 'Femenino', 'Otro') NOT NULL,
-    fechaNacimiento DATE NOT NULL,
     telefono VARCHAR(16),
     correo VARCHAR(100) NOT NULL UNIQUE,
     contrasena VARCHAR(255) NOT NULL,
     direccion VARCHAR(150),
-    nit VARCHAR(20) UNIQUE,
     fechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     activo BOOLEAN DEFAULT TRUE,
     CONSTRAINT pk_Cliente PRIMARY KEY (idCliente)

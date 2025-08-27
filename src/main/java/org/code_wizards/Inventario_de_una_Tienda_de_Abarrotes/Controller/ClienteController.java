@@ -46,6 +46,7 @@ public class ClienteController {
 
         if (esNuevo) {
             this.clienteSeleccionado.setFechaRegistro(LocalDate.now());
+            this.clienteSeleccionado.setActivo(true); // Siempre activo al crear
         }
 
         this.clienteService.guardarCliente(this.clienteSeleccionado);
@@ -64,7 +65,6 @@ public class ClienteController {
 
         this.clienteSeleccionado = new Cliente();
     }
-
 
     public void login() {
         Cliente cliente = this.clienteService.login(
